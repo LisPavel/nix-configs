@@ -38,6 +38,7 @@
     #   echo "Hello, ${config.home.username}!"
     # '')
     obsidian
+    vscodium
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
@@ -73,8 +74,8 @@
   programs.home-manager.enable = true;
 
   # Git ssh singing 
-  home.file.".ssh/allowed_signers".text =
-    "* ${builtins.readFile ~/.ssh/id_ed25519.pub}";
+  #home.file.".ssh/allowed_signers".text =
+  #  "* ${builtins.readFile ~/.ssh/id_ed25519.pub}";
 
   # Configuring git
   programs.git = {
@@ -90,16 +91,16 @@
       };
 
       # Setting up ssh singing
-      commit.gpgsign = true;
-      gpg = {
-        format = "ssh";
-	ssh.allowedSignersFile = "~/.ssh/allowed_signers";
-      };
-      user.signingkey = "~/.ssh/id_ed25519.pub";
+      #commit.gpgsign = true;
+      #gpg = {
+      #  format = "ssh";
+#	ssh.allowedSignersFile = "~/.ssh/allowed_signers";
+#      };
+#      user.signingkey = "~/.ssh/id_ed25519.pub";
     };
   };
-  programs.ssh.enable = true;
+#  programs.ssh.enable = true;
 
   # Services
-  services.ssh-agent.enable = true;
+#  services.ssh-agent.enable = true;
 }
