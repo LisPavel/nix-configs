@@ -103,4 +103,49 @@
       };
     };
   };
+
+  # --- ZSH ---
+  programs.zsh = {
+    enable = true;
+
+    enableAutosuggestions = true;
+    enableCompletion = true;
+    syntaxHighlighting = { enable = true; };
+
+    # needed for powerlevel10k theme
+    initExtraBeforeCompInit = ''
+      # p10k instant prompt
+      local P10K_INSTANT_PROMPT="${config.xdg.cacheHome}/p10k-instant-prompt-''${(%):-%n}.zsh"
+      [[ ! -r "$P10K_INSTANT_PROMPT" ]] || source "$P10K_INSTANT_PROMPT"
+    '';
+
+    plugins = with pkgs; [
+      {
+        file = "powerlevel10k.zsh-theme";
+        name = "powerlevel10k";
+        src = "${zsh-powerlevel10k}/share/zsh-powerlevel10k";
+      }
+      {
+        file = "p10k.zsh";
+        name = "powerlevel10k-config";
+        src = ../zsh/p10k.zsh; # Some directory containing your p10k.zsh file
+      }
+    ];
+
+    oh-my-zsh = {
+      enable = true;
+      plugins = [
+        "command-not-found"
+        "git"
+        "history"
+        "sudo"
+      ];
+    };
+
+    initExtra = ''
+      POWERLEVEL9K_DISABLE_CONFIGURATION_WIZARD=true
+      source ~/Documents/NixConfig/zsh/p10k.zsh
+    '';
+  };
+  # === ZSH ===
 }
