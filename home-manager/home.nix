@@ -18,6 +18,9 @@
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
+  # Enable fonts
+  fonts.fontconfig.enable = true;
+
   # The home.packages option allows you to install Nix packages into your
   # environment.
   home.packages = with pkgs; [
@@ -39,6 +42,19 @@
     # '')
     obsidian
     vscodium
+    neovim
+
+    # --- nerdfonts ---
+    (nerdfonts.override { fonts = [ "Meslo" ]; })
+    # === nerdfonts ===
+
+    # --- lazyvim ---
+    lazygit
+    gcc
+    ripgrep
+    fd
+    tree-sitter
+    # === lazyvim ===
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
