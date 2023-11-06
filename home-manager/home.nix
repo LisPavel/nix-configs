@@ -40,6 +40,7 @@
     # (pkgs.writeShellScriptBin "my-hello" ''
     #   echo "Hello, ${config.home.username}!"
     # '')
+    brave
     obsidian
     vscodium
     neovim
@@ -90,7 +91,7 @@
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 
-  # Configuring git
+  # --- git ---
   programs.git = {
     enable = true;
     userName = "Pavel Lisitsyn";
@@ -104,6 +105,7 @@
       };
     };
   };
+  # === git ===
 
   # --- ZSH ---
   programs.zsh = {
