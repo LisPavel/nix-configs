@@ -44,6 +44,7 @@
     obsidian
     vscodium
     neovim
+    vial
 
     # --- nerdfonts ---
     (nerdfonts.override { fonts = [ "Meslo" ]; })
